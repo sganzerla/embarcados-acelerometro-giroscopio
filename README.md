@@ -1,4 +1,4 @@
-# embarcados-giroscopio
+# embarcados-acelerometro-giroscopio
 
 ## Créditos
 
