@@ -6,7 +6,11 @@ Este tutorial é baseado na publicação do [how2electronics](https://how2electr
 
 ### Visão geral
 
-Com esse tutorial será possível capturar os dados gerados pelos sensores do acelerômetro `adxl345` e interagir com uma animação 3D utilizando o software Processing 3D IDE.
+Com esse tutorial será possível capturar os dados gerados pelos sensores do acelerômetro `ADXL345` e interagir com uma animação 3D utilizando o software Processing 3D IDE.
+
+O sensor utilizado nesse exemplo é o ADXL345. Em conexões do tipo [I2C](https://github.com/sganzerla/embarcados-protocolos-comunicacao/tree/master/I2C) o endereço desse dispositivo é `0x53` caso o pino `CS` seja `LOW` e caso ele seja `HIGH` o valor muda para `0x1D`.
+
+Outros modelos de acelerômetro como o `GY521` são endereçados como `0x68` e `0x69` com pino `CS` setado como `HIGH` e `LOW` respectivamente.
 
 ### Montagem do Circuito
 
@@ -18,7 +22,7 @@ Com esse tutorial será possível capturar os dados gerados pelos sensores do ac
 
 2 - Rodar o [programa Java](https://github.com/sganzerla/embarcados-giroscopio/blob/master/processing-3d/render-acelerometro.pde) dentro da IDE Processing 3D
 
-3 - Alterar a porta Serial que está conectado o Arduino com o sensor, normalmente é encontrada no canto inferior direito da IDE do Arduino, ou VSCode. No Windows começam com `COM1, COM2` e no Linux `/dev/ttyUSB0`.
+3 - Alterar a porta Serial que está conectado o Arduino com o sensor, normalmente é encontrada no canto inferior direito da IDE do Arduino ou VSCode. No Windows começam com `COM1, COM2` e no Linux `/dev/ttyUSB0`.
 
 ```
 void setup() {
