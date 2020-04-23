@@ -16,7 +16,7 @@ Com esse tutorial será possível capturar os dados gerados pelos sensores do ac
 
 1 - Necessário instalar a [IDE Processing 3D](https://processing.org/download/)  
 
-2 - Rodar o o programa Java abaixo dentro da IDE Processing 3D
+2 - Rodar o [programa Java](https://github.com/sganzerla/embarcados-giroscopio/blob/master/processing-3d/render-acelerometro.pde) dentro da IDE Processing 3D
 
 3 - Alterar a porta Serial que está conectado o Arduino com o sensor, normalmente é encontrada no canto inferior direito da IDE do Arduino, ou VSCode. No Windows começam com `COM1, COM2` e no Linux `/dev/ttyUSB0`.
 
@@ -27,8 +27,32 @@ sp = new Serial(this, "/dev/ttyUSB0", 9600); //You have to rename your port in t
 buff = new byte[128];
 r = new float[3];
 }
+```
+
+### Hardware necessário
 
 ```
+- a) 1 Placa Arduino com cabo USB
+- b) 1 Acelerômetro ADXL345
+- c) 1 Protoboard
+- d) 6 Cabos de conexão
+```
+
+#### a) Placa Arduino Uno
+
+![image](https://user-images.githubusercontent.com/22710963/77551422-16cbf500-6e91-11ea-850d-7e3989c9f1f2.png)
+
+#### b) Acelerômetro ADXL345
+
+![image](https://user-images.githubusercontent.com/22710963/80141668-49483b00-8580-11ea-952f-ba84bd779e46.png)
+
+#### c) Protoboard
+
+![image](https://user-images.githubusercontent.com/22710963/77499362-a8574a80-6e30-11ea-9744-a15c3206fd50.png)
+
+#### d) Cabos de conexão
+
+![image](https://user-images.githubusercontent.com/22710963/77499606-5662f480-6e31-11ea-96fd-9e268dceb50f.png)
 
 ## Fonte
 
