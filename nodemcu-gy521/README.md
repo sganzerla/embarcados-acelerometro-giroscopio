@@ -6,7 +6,7 @@ Este tutorial é baseado na publicação do [Filipe Flop](https://www.filipeflop
 
 ### Visão geral
 
-Com esse tutorial será possível capturar os dados gerados pelos sensores do acelerômetro `GY521` e interagir com uma animação 3D utilizando o software Processing 3D IDE.
+Com esse tutorial será possível capturar os dados gerados pelos sensores do acelerômetro `GY521`.
 
 O sensor utilizado nesse exemplo é o GY521. Em conexões do tipo [I2C](https://github.com/sganzerla/embarcados-protocolos-comunicacao/tree/master/I2C) o `GY521` são endereçados como `0x68` e `0x69` com pino `CS` setado como `LOW` e `HIGH` respectivamente.
 

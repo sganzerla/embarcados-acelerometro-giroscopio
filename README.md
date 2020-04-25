@@ -1,67 +1,48 @@
 # embarcados-acelerometro-giroscopio
 
-## Créditos
+## Conceitos
 
-Este tutorial é baseado na publicação do [how2electronics](https://how2electronics.com/interface-adxl345-accelerometer-with-arduino/)
+### Giroscópio
 
-### Visão geral
+Sensores giroscópicos podem monitorar a orientação, direção, movimento angular e rotação. No smartphone, um sensor giroscópico geralmente executa funções de reconhecimento de gestos. Além disso, os giroscópios em smartphone ajudam a determinar a posição e orientação do aparelho.
 
-Com esse tutorial será possível capturar os dados gerados pelos sensores do acelerômetro `ADXL345` e interagir com uma animação 3D utilizando o software Processing 3D IDE.
+### Acelerômetro
 
-O sensor utilizado nesse exemplo é o ADXL345. Em conexões do tipo [I2C](https://github.com/sganzerla/embarcados-protocolos-comunicacao/tree/master/I2C) o endereço desse dispositivo é `0x53` caso o pino `CS` seja `LOW` e caso ele seja `HIGH` o valor muda para `0x1D`.
+O acelerômetro é um sensor que mede aceleração, bem como a inclinação, ângulo de inclinação, rotação, vibração, colisão e gravidade. Quando utilizado em um smartphone, o acelerômetro pode mudar automaticamente o visor do celular na vertical ou horizontal, já que esse sensor pode verificar em que eixo vetor aceleração da gravidade atua.
 
-Outros modelos de acelerômetro como o `GY521` são endereçados como `0x68` e `0x69` com pino `CS` setado como `HIGH` e `LOW` respectivamente.
+## Modelos de Acelerômetros
 
-### Vídeo
-[![Vídeo](https://user-images.githubusercontent.com/22710963/80162468-d358c980-85a9-11ea-871f-75823a36d56a.png)](
-https://youtu.be/8fx6e9jtnaU)
+### GY521 - [DataSheet](arduino-adxl345/ADXL345_SEN0032_datasheet_EN.pdf)
 
-### Montagem do Circuito
+Este sensor utiliza o MPU-6050 que combina 3 eixos de giroscópio e 3 eixos de acelerômetro juntamente com um processador digital de movimento responsável por fazer cálculos complexos com os sensores e cujos dados podem ser usados para sistemas de reconhecimento de gestos, navegação (GPS), jogos e diversas outras aplicações. Outro recurso adicional é o sensor de temperatura embutido no CI, que permite medições entre -40 e +85 ºC.
 
-![image](https://user-images.githubusercontent.com/22710963/80112333-5f8dd100-8557-11ea-8b88-a754d16ab305.png)
+Essa placa utiliza o protocolo I2C para transmissão de dados.
 
-### Renderizando animação com o sensor
+Faixa de giroscópios +/- 250, 500, 1000 e 2000 graus/seg
 
-1 - Necessário instalar a [IDE Processing 3D](https://processing.org/download/)  
+Faixa de Aceleração +/- 2g, +/- 4g, +/- 8g e +/- 16g
 
-2 - Rodar o [programa Java](https://github.com/sganzerla/embarcados-giroscopio/blob/master/processing-3d/render-acelerometro.pde) dentro da IDE Processing 3D
+### ADXL345 -  [DataSheet](../embarcados-acelerometro-giroscopio/arduino-adxl345/ADXL345_SEN0032_datasheet_EN.pdf)
 
-3 - Alterar a porta Serial que está conectado o Arduino com o sensor, normalmente é encontrada no canto inferior direito da IDE do Arduino ou VSCode. No Windows começam com `COM1, COM2` e no Linux `/dev/ttyUSB0`.
+O ADXL345 é um acelerômetro de 3 eixos com alta resolução (13-bit) de medição de até ± 16 g,pequeno, fino e de baixo consumo de potência. Os dados digitais de saída são formatados como pares de 16 bits complementar e é acessível por meio de uma interface digital SPI (3 ou 4 fios) ou I2C.
 
-```
-void setup() {
-size(400, 300, P3D);
-sp = new Serial(this, "/dev/ttyUSB0", 9600); //You have to rename your port in the "" and change the baud rate.
-buff = new byte[128];
-r = new float[3];
-}
-```
+O ADXL345 é bem adequado para medidas de aceleração estática de gravidade em aplicações de detecção de inclinação, bem como de aceleração dinâmica resultante do movimento ou choque. A sua alta resolução (4 mg / LSB) permite a medição de inclinação com variação de menos de 1,0 °. Ele ainda possui diversas funções especiais de leitura como:
 
-### Hardware necessário
+- Detecção de Atividade ou inatividade para detectar a presença ou ausência de movimento e se a aceleração em qualquer eixo ultrapassa um nível definido pelo usuário.
 
-```
-- a) 1 Placa Arduino com cabo USB
-- b) 1 Acelerômetro ADXL345
-- c) 1 Protoboard
-- d) 6 Cabos de conexão
-```
+- Detecção de toque detecta toques individuais e duplos.
 
-#### a) Placa Arduino Uno
+- Detecção de queda livre detecta se o dispositivo está caindo.
 
-![image](https://user-images.githubusercontent.com/22710963/77551422-16cbf500-6e91-11ea-850d-7e3989c9f1f2.png)
+Estas funções podem ser mapeadas a um dos dois pinos de saída de interrupção. Um sistema integrado de buffer FIFO (first in, first out) de 32 níveis pode ser usado para armazenar dados, minimizando a intervenção do processador. Modos de baixo consumo permitem o gerenciamento inteligente de energia com base em movimento com sensor de limite e medição de aceleração ativa com uma dissipação de energia extremamente baixa.
 
-#### b) Acelerômetro ADXL345
-
-![image](https://user-images.githubusercontent.com/22710963/80141668-49483b00-8580-11ea-952f-ba84bd779e46.png)
-
-#### c) Protoboard
-
-![image](https://user-images.githubusercontent.com/22710963/77499362-a8574a80-6e30-11ea-9744-a15c3206fd50.png)
-
-#### d) Cabos de conexão
-
-![image](https://user-images.githubusercontent.com/22710963/77499606-5662f480-6e31-11ea-96fd-9e268dceb50f.png)
+Essa placa utiliza o protocolo I2C ou SPI para transmissão de dados.
 
 ## Fonte
 
-[how2electronics](https://how2electronics.com/interface-adxl345-accelerometer-with-arduino/) - Acessado em Maio 2020.
+[Vida de Silício](https://www.vidadesilicio.com.br/modulo-gy-521-acelerometro-giroscopio) - Acessado em Maio 2020.
+
+[Baú da Eletrônica](https://www.baudaeletronica.com.br/acelerometro-de-tres-eixos-adxl345-dfrobot.html) - Acessado em Maio 2020.
+
+[Filipe Flop](https://www.filipeflop.com/blog/tutorial-acelerometro-mpu6050-arduino/) - Acessado em Maio 2020.
+

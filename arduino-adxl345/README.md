@@ -1,4 +1,4 @@
-# arduino-adxl345
+# embarcados-acelerometro-giroscopio
 
 ## Créditos
 
@@ -10,7 +10,11 @@ Com esse tutorial será possível capturar os dados gerados pelos sensores do ac
 
 O sensor utilizado nesse exemplo é o ADXL345. Em conexões do tipo [I2C](https://github.com/sganzerla/embarcados-protocolos-comunicacao/tree/master/I2C) o endereço desse dispositivo é `0x53` caso o pino `CS` seja `LOW` e caso ele seja `HIGH` o valor muda para `0x1D`.
 
-Outros modelos de acelerômetro como o `GY521` são endereçados como `0x68` e `0x69` com pino `CS` setado como `LOW` e `HIGH` respectivamente.
+Outros modelos de acelerômetro como o `GY521` são endereçados como `0x68` e `0x69` com pino `CS` setado como `LOW` E `HIGH` respectivamente.
+
+### Vídeo
+[![Vídeo](https://user-images.githubusercontent.com/22710963/80162468-d358c980-85a9-11ea-871f-75823a36d56a.png)](
+https://youtu.be/8fx6e9jtnaU)
 
 ### Montagem do Circuito
 
