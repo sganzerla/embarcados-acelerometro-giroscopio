@@ -1,5 +1,5 @@
 //Programa: Acelerometro com ESP8266 NodeMCU
-#include <Wire.h>        // biblioteca de comunicação I2C
+#include <Wire.h> // biblioteca de comunicação I2C
 
 /*
  * Definições de alguns endereços mais comuns do MPU6050
@@ -18,7 +18,7 @@ const int scl_pin = D6; // definição do pino I2C SCL
 bool led_state = false;
 
 // variáveis para armazenar os dados "crus" do acelerômetro
-int16_t AcX, AcY, AcZ, GyX, GyY, GyZ;
+int16_t AcX, AcY, AcZ, Tmp, GyX, GyY, GyZ;
 
 /*
  * função que configura a I2C com os pinos desejados 
@@ -134,7 +134,7 @@ void setGyroScale()
 
 /* função para configurar as escalas do acelerômetro
    registro da escala do acelerômetro: 0x1C[4:3]
-   0 é 250°/s
+   0 é 2g
  
     AFS_SEL   Full Scale Range
       0           ± 2g            0b00000000
@@ -182,6 +182,9 @@ void readRawMPU()
   AcZ = Wire.read() << 8;
   AcZ |= Wire.read();
 
+  Tmp = Wire.read() << 8;
+  Tmp |= Wire.read();
+
   GyX = Wire.read() << 8;
   GyX |= Wire.read();
   GyY = Wire.read() << 8;
@@ -195,6 +198,8 @@ void readRawMPU()
   Serial.print(AcY);
   Serial.print(" | AcZ = ");
   Serial.print(AcZ);
+  Serial.print(" | Tmp = ");
+  Serial.print(Tmp / 340.00 + 36.53);
   Serial.print(" | GyX = ");
   Serial.print(GyX);
   Serial.print(" | GyY = ");

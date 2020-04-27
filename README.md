@@ -12,15 +12,17 @@ O acelerômetro é um sensor que mede aceleração, bem como a inclinação, ân
 
 ## Modelos de Acelerômetros
 
-### GY521 - [DataSheet](arduino-adxl345/ADXL345_SEN0032_datasheet_EN.pdf)
+### GY521 - [DataSheet](nodemcu-gy521/MPU-6000-Datasheet1.pdf)
 
-Este sensor utiliza o MPU-6050 que combina 3 eixos de giroscópio e 3 eixos de acelerômetro juntamente com um processador digital de movimento responsável por fazer cálculos complexos com os sensores e cujos dados podem ser usados para sistemas de reconhecimento de gestos, navegação (GPS), jogos e diversas outras aplicações. Outro recurso adicional é o sensor de temperatura embutido no CI, que permite medições entre -40 e +85 ºC.
+Este sensor utiliza o MPU-6050 que é uma IMU (Inertial Measurement Unit), ela mede valores de aceleração em 3 eixos, X, Y e Z e velocidade angular também em X, Y e Z. Por isso esse sensor tem 6 graus de liberdade (6DOF). Os dados podem ser usados para sistemas de reconhecimento de gestos, navegação (GPS), jogos e diversas outras aplicações. Outro recurso adicional é o sensor de temperatura embutido no CI, que permite medições entre -40 e +85 ºC.
 
 Essa placa utiliza o protocolo I2C para transmissão de dados.
 
 Faixa de giroscópios +/- 250, 500, 1000 e 2000 graus/seg
 
 Faixa de Aceleração +/- 2g, +/- 4g, +/- 8g e +/- 16g
+
+Um exemplo de implementação com microntrolador [NodeMCU](nodemcu-gy521/README.md)
 
 ### ADXL345 -  [DataSheet](../embarcados-acelerometro-giroscopio/arduino-adxl345/ADXL345_SEN0032_datasheet_EN.pdf)
 
@@ -38,6 +40,8 @@ Estas funções podem ser mapeadas a um dos dois pinos de saída de interrupçã
 
 Essa placa utiliza o protocolo I2C ou SPI para transmissão de dados.
 
+Um exemplo de implementação com microntrolador [Arduino](arduino-adxl345/README.md)
+
 ## Fonte
 
 [Vida de Silício](https://www.vidadesilicio.com.br/modulo-gy-521-acelerometro-giroscopio) - Acessado em Maio 2020.
@@ -45,4 +49,3 @@ Essa placa utiliza o protocolo I2C ou SPI para transmissão de dados.
 [Baú da Eletrônica](https://www.baudaeletronica.com.br/acelerometro-de-tres-eixos-adxl345-dfrobot.html) - Acessado em Maio 2020.
 
 [Filipe Flop](https://www.filipeflop.com/blog/tutorial-acelerometro-mpu6050-arduino/) - Acessado em Maio 2020.
-
