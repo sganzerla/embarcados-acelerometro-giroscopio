@@ -1,4 +1,8 @@
-# scan-address-gy521
+# scan-address
+
+## Objetivo
+
+O objetivo desse programa é identificar em qual dos dois possíveis endereços hexadecimal está setado o sensor.  
 
 ## Conceitos
 
