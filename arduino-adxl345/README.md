@@ -13,6 +13,7 @@ O sensor utilizado nesse exemplo é o ADXL345. Em conexões do tipo [I2C](https:
 Outros modelos de acelerômetro como o `GY521` são endereçados como `0x68` e `0x69` com pino `CS` setado como `LOW` E `HIGH` respectivamente.
 
 ### Vídeo
+
 [![Vídeo](https://user-images.githubusercontent.com/22710963/80162468-d358c980-85a9-11ea-871f-75823a36d56a.png)](
 https://youtu.be/8fx6e9jtnaU)
 
