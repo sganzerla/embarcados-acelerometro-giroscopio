@@ -10,8 +10,6 @@ Segundo o datasheet do fabricante a tolerância aceitavel para variação nos te
 
 ## Circuito
 
-Esse circuito mostra como é possível utilizar dois sensores `GY521` juntos com o mesmo microcontrolador.
-
 ![image](./gy521.png)
 
 ## Resultado

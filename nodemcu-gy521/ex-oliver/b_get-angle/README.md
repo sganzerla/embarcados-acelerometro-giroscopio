@@ -13,8 +13,6 @@ Há a opção de calibragem dos sensores para ajustar valores.
 
 ## Circuito
 
-Esse circuito mostra como é possível utilizar dois sensores `GY521` juntos com o mesmo microcontrolador.
-
 ![image](./gy521.png)
 
 ## Resultado
