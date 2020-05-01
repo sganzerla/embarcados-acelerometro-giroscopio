@@ -1,11 +1,11 @@
-# nodemcu-gy521
+# Dados DataSheet MP5060
 
-## Dados DataSheet MP5060
-
-### Giroscópio
+## Giroscópio
 
 ![image](gyr-data-sheet.png)
 
-### Acelerômetro
+## Acelerômetro
 
 ![image](acc-data-sheet.png)
+
+ 
