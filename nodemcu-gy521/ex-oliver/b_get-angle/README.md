@@ -17,6 +17,8 @@ Esse circuito mostra como é possível utilizar dois sensores `GY521` juntos com
 
 ![image](./gy521.png)
 
+## Resultado
+
 ```
  GyX = -123.23 °/s| GyY = -140.51 °/s| GyZ = -125.19 °/s| Tmp = 25.61 °C| AcX = -3.00 g| AcY = -1.90 g| AcZ = 1.59 g
  Offsets: GyX = -16144 | GyY = -18405 | GyZ = -16422 | AcX = -16401 | AcY = -7774 | AcZ = 6543
