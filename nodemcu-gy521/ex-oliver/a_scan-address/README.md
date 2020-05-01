@@ -19,7 +19,7 @@ Os endereços `I²C` do dispositivo são alteráveis utilizando o pino `ADO`, qu
 
 Esse circuito mostra como é possível utilizar dois sensores `GY521` juntos com o mesmo microcontrolador.
 
-![image](./multiple-gy521.png])
+![image](./multiple-gy521.png)
 
 ## [Vídeo](multiple-i2c.webm)
 
