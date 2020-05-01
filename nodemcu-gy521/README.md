@@ -1,10 +1,10 @@
 # Dados DataSheet MP5060
 
-## Giroscópio
+## Acelerômetro
 
 ![image](gyr-data-sheet.png)
 
-## Acelerômetro
+## Giroscópio
 
 ![image](acc-data-sheet.png)
 
