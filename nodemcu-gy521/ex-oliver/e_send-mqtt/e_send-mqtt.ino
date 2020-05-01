@@ -1,4 +1,7 @@
 #include "MPU6050.h"
+#include "ESP8266WiFi.h"
+#include "PubSubClient.h"
+#include "WiFiConfig.h" // WiFi and MQTT Configuration Info
 
 ADC_MODE(ADC_VCC);
 
@@ -8,25 +11,49 @@ const float calibVCC = 0.00118467153; // Calibration based on measurement
 
 MPU6050 testUnit(MPU_addr);
 
+const byte interruptPin = D7;
 const uint8_t threshold = 20; // Adjust to change sensitivity to acceleration
 const uint8_t duration = 10;  // Adjust to change duration of motion to trigger interrupt
+
+uint8_t MAC_array[6];
+char MAC_char[18];
+
+WiFiClient espClient;
+PubSubClient client(espClient);
+
+char msg[50];
 
 void setup()
 {
     Wire.begin();
     disableMotionInt();
-    Serial.begin(115200);
+    //Serial.begin(115200);
     setup_wifi();
+    client.setServer(mqtt_server, mqtt_port);
 
-    Serial.println("I'm Awake!");
-    Serial.print("Motion detect Status : ");
-    Serial.println(testUnit.getMotionStatus(), BIN);
+    //Serial.println("I'm Awake!");
+    //Serial.print("Motion detect Status : "); Serial.println(testUnit.getMotionStatus(),BIN);
 
     float getVcc = ESP.getVcc() * calibVCC;
-    Serial.print("Supply Voltage : ");
-    Serial.print(getVcc, 4);
-    Serial.println(" V ");
-    Serial.println("Going to sleep. . .");
+    //Serial.print("Supply Voltage : ");Serial.print(getVcc,4);Serial.println(" V ");
+
+    if (!client.connected())
+    {
+        reconnect();
+    }
+    client.loop();
+
+    strcpy(msg, "Motion Detected!! ");
+    //Serial.print("Publish message: ");
+    //Serial.println(msg);
+    client.publish("FrontSensor/Motion", msg);
+
+    strcpy(msg, " ");
+    dtostrf(getVcc, 2, 2, &msg[strlen(msg)]);
+    //Serial.print("Publish message: ");
+    //Serial.println(msg);
+    client.publish("FrontSensor/Vcc", msg);
+    //Serial.println("Going to sleep. . .");
     enableMotionInt();
     ESP.deepSleep(0);
 }
@@ -39,9 +66,22 @@ void setup_wifi()
 {
 
     delay(10);
-    Serial.println();
-    delay(500);
-    Serial.print(".");
+    //Serial.println();
+    //Serial.print("Connecting to ");
+    //Serial.println(ssid);
+
+    WiFi.begin(ssid, password);
+
+    while (WiFi.status() != WL_CONNECTED)
+    {
+        delay(500);
+        //Serial.print(".");
+    }
+
+    //Serial.println("");
+    //Serial.println("WiFi connected");
+    //Serial.println("IP address: ");
+    //Serial.println(WiFi.localIP());
 }
 
 void disableMotionInt()
@@ -100,4 +140,28 @@ void enableMotionInt()
     testUnit.setInterruptLatchClear(0);
     testUnit.setInterruptDrive(0);
     testUnit.setInterruptMode(1);
+}
+
+void reconnect()
+{
+    // Loop until we're reconnected
+    while (!client.connected())
+    {
+        //Serial.print("Attempting MQTT connection...");
+        // Attempt to connect
+        if (client.connect(clientID, mqtt_username, mqtt_password))
+        {
+            //Serial.println("connected");
+            // Once connected, publish an announcement...
+            client.publish("FrontSensor/alive", "I'm Alive!");
+        }
+        else
+        {
+            //Serial.print("failed, rc=");
+            //Serial.print(client.state());
+            //Serial.println(" try again in 5 seconds");
+            // Wait 5 seconds before retrying
+            delay(5000);
+        }
+    }
 }

@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-O objetivo desse programa é detectar movimento do sensor resetando a placa, a cada reinicio esta sendo informado a voltagem da carga elétrica.
+O objetivo desse programa é detectar movimento do sensor resetando a placa, a cada reinicio esta sendo informado a voltagem da carga elétrica e enviar os dados para um broker pelo protocolo MQTT.
 
 ## Circuito
 
