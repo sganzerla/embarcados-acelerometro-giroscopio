@@ -1,5 +1,10 @@
 # 2-move-servo
 
+## Créditos
+
+Esse tutorial é uma adpatação do projeto de
+[Giuseppe Caccavale](http://www.giuseppecaccavale.it/arduino/mpu-6050-gy-521-arduino-tutorial/).
+
 ## Objetivo
 
 O programa tem o objetivo de fazer a leitura dos dados gerados pelo `GY521` conectado como `SLAVE` no protocolo `I2C` ao `NodeMCU` convertendo os dados dos eixos X e Y do acelerômetro para ângulos e movendo dois servos motores representando cada um dos eixos.
@@ -10,6 +15,10 @@ VCC -> 3v
 GND -> G
 SDA -> D2
 SCL -> D1
+
+### Vídeo
+
+[![Vídeo](../resource/capa.png)](https://youtu.be/68MxqiCudaU)
 
 ### Circuito
 
@@ -46,3 +55,33 @@ double FunctionsPitchRoll(double A, double B, double C)
     return (int)Value;
 }
 ```
+
+### Hardware necessário
+
+```
+- a) 1 Placa NodeMCU com cabo USB
+- b) 1 Acelerômetro GY521
+- c) 2 Servo Motor Tower SG90
+- d) 1 Protoboard
+- e) 12 Cabos de conexão
+```
+
+#### a) Placa Arduino Uno
+
+![image](https://user-images.githubusercontent.com/22710963/80269854-bd223a80-8689-11ea-9cac-1119c70b2a1c.png)
+
+#### b) Acelerômetro GY521
+
+![image](https://user-images.githubusercontent.com/22710963/80141668-49483b00-8580-11ea-952f-ba84bd779e46.png)
+
+#### c) Servo Motor Tower SG90
+
+![image](https://user-images.githubusercontent.com/22710963/80988080-59c2a600-8e09-11ea-9414-8ebef8b0d67f.png)
+
+#### d) Protoboard
+
+![image](https://user-images.githubusercontent.com/22710963/77499362-a8574a80-6e30-11ea-9744-a15c3206fd50.png)
+
+#### d) Cabos de conexão
+
+![image](https://user-images.githubusercontent.com/22710963/77499606-5662f480-6e31-11ea-96fd-9e268dceb50f.png)
