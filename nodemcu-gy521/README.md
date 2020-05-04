@@ -6,6 +6,8 @@ Exemplos Implementação
 
 [Oliver](ex-oliver/)
 
+[Giuseppe](ex-giuseppe/)
+
 ## Acelerômetro
 
 ![image](gyr-data-sheet.png)
