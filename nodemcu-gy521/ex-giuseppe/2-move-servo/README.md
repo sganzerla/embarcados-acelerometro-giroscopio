@@ -11,15 +11,38 @@ GND -> G
 SDA -> D2
 SCL -> D1
 
-Estando o sensor conectado corretamente a leitura na porta Serial será a seguinte:
+### Circuito
+
+![image](../resource/gy521_servo.png)
+
+### Função Conversão Ângulos
+
+Função envia como primeiro parâmetro o eixo desejado para obter o valor (X ou Y).
+Em seguida faz um map entre os valores dos ângulos e os limites de movimentação dos servo motores, que no modelo `SG90 Micro Tower` é de apenas 180°.
 
 ```
-Accelerometer: X = 3118 | Y = 883 | Z = 1510
-Temperature: 17.89 C
-Gyroscope: X = -112 | Y = 12 | Z = -161
+    Roll = FunctionsPitchRoll(AcX, AcY, AcZ);  //Calcolo angolo Roll
+    Pitch = FunctionsPitchRoll(AcY, AcX, AcZ); //Calcolo angolo Pitch
 
-Accelerometer: X = 3099 | Y = 893 | Z = 1510
-Temperature: 17.89 C
-Gyroscope: X = -113 | Y = 14 | Z = -151
+    int ServoRoll = map(Roll, -90, 90, 0, 179);
+    int ServoPitch = map(Pitch, -90, 90, 179, 0);
 
+```
+
+Essa é a função que converte os valores brutos para ângulos.
+
+```
+//Funzione per il calcolo degli angoli Pitch e Roll
+double FunctionsPitchRoll(double A, double B, double C)
+{
+    double DatoA, DatoB, Value;
+    DatoA = A;
+    DatoB = (B * B) + (C * C);
+    DatoB = sqrt(DatoB);
+
+    Value = atan2(DatoA, DatoB);
+    Value = Value * 180 / 3.14;
+
+    return (int)Value;
+}
 ```
