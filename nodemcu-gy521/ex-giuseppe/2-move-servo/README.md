@@ -11,10 +11,12 @@ O programa tem o objetivo de fazer a leitura dos dados gerados pelo `GY521` cone
 
 As conexões do `GY-521` com o `NodeMCU` devem ser as seguintes:
 
-VCC -> 3v
-GND -> G
-SDA -> D2
-SCL -> D1
+GY-521 | NODEMCU
+------ | -------
+ VCC   |  3v
+ GND   |  G
+ SDA   |  D2
+ SCL   |  D1
 
 ### Vídeo
 
@@ -30,8 +32,8 @@ Função envia como primeiro parâmetro o eixo desejado para obter o valor (X ou
 Em seguida faz um map entre os valores dos ângulos e os limites de movimentação dos servo motores, que no modelo `SG90 Micro Tower` é de apenas 180°.
 
 ```
-    Roll = FunctionsPitchRoll(AcX, AcY, AcZ);  //Calcolo angolo Roll
-    Pitch = FunctionsPitchRoll(AcY, AcX, AcZ); //Calcolo angolo Pitch
+    Roll = FunctionsPitchRoll(AcX, AcY, AcZ);  
+    Pitch = FunctionsPitchRoll(AcY, AcX, AcZ); 
 
     int ServoRoll = map(Roll, -90, 90, 0, 179);
     int ServoPitch = map(Pitch, -90, 90, 179, 0);
@@ -41,7 +43,6 @@ Em seguida faz um map entre os valores dos ângulos e os limites de movimentaç�
 Essa é a função que converte os valores brutos para ângulos.
 
 ```
-//Funzione per il calcolo degli angoli Pitch e Roll
 double FunctionsPitchRoll(double A, double B, double C)
 {
     double DatoA, DatoB, Value;
@@ -82,6 +83,6 @@ double FunctionsPitchRoll(double A, double B, double C)
 
 ![image](https://user-images.githubusercontent.com/22710963/77499362-a8574a80-6e30-11ea-9744-a15c3206fd50.png)
 
-#### d) Cabos de conexão
+#### e) Cabos de conexão
 
 ![image](https://user-images.githubusercontent.com/22710963/77499606-5662f480-6e31-11ea-96fd-9e268dceb50f.png)
