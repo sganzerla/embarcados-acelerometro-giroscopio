@@ -67,7 +67,7 @@ double FunctionsPitchRoll(double A, double B, double C)
 - e) 12 Cabos de conexão
 ```
 
-#### a) Placa Arduino Uno
+#### a) Placa NodeMCU 8266
 
 ![image](https://user-images.githubusercontent.com/22710963/80269854-bd223a80-8689-11ea-9cac-1119c70b2a1c.png)
 
